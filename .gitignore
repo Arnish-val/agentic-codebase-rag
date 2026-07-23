@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+packages/*/node_modules/
+
+# Environment secrets
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+packages/client/dist/
+packages/*/dist/
+packages/*/.turbo/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes (local dev)
+.docker-volumes/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Repo cache (ingestion service)
+/tmp/repos/
+
+# Sandbox build artifacts
+sandbox/images/*/node_modules/

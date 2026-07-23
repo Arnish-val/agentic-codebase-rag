@@ -30,6 +30,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 ## Session Log
 
 - **2026-07-29:** Project initialized. PROJECT.md, REQUIREMENTS.md, ROADMAP.md created. 44 v1 requirements defined across 9 categories. 9-phase roadmap established.
+- **2026-07-29 (Session Resumed):** Resumed scaffolding phase. Completed root config, Express backend (`packages/server`), and core LangGraph agent nodes (`packages/agents`). Proceeding with agent tools/prompts, ingestion pipeline, client UI, and Docker sandbox.
 
 ---
 *Last updated: 2026-07-29*
+

@@ -1,0 +1,29 @@
+{
+  "name": "agentic-codebase",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Agentic Codebase & Documentation Intelligence Platform",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=packages/server\" \"npm run dev --workspace=packages/agents\" \"npm run dev --workspace=packages/client\"",
+    "dev:server": "npm run dev --workspace=packages/server",
+    "dev:agents": "npm run dev --workspace=packages/agents",
+    "dev:client": "npm run dev --workspace=packages/client",
+    "ingest": "npm run start --workspace=packages/ingestion",
+    "build": "npm run build --workspace=packages/client",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}
