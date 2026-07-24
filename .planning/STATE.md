@@ -9,8 +9,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 
 ## Current Phase
 
-- **Phase:** 1
-- **Name:** Project Scaffolding & Core Infrastructure
+- **Phase:** 2
+- **Name:** Ingestion Pipeline & Hybrid Retrieval Engine
 - **Status:** Complete
 
 ## Progress
@@ -18,8 +18,9 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 | Phase | Name | Status |
 |-------|------|--------|
 | 1 | Project Scaffolding & Core Infrastructure | Complete |
-| 2 | Ingestion Pipeline & Hybrid Retrieval Engine | Not Started |
+| 2 | Ingestion Pipeline & Hybrid Retrieval Engine | Complete |
 | 3 | LangGraph Agent Orchestration & Generation Pipeline | Not Started |
+
 
 | 4 | Sandboxed Code Execution Engine | Not Started |
 | 5 | Conversation Memory & Multi-Hop Reasoning | Not Started |
