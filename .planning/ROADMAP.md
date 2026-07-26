@@ -36,7 +36,8 @@
 ### Phase 5: Conversation Memory & Multi-Hop Reasoning
 **Goal:** Implement session-based conversation memory, context-aware follow-up retrieval, multi-hop query chaining, and session persistence.
 **Requirements:** RETR-06, MEM-01, MEM-02, MEM-03, MEM-04
-**Status:** Not Started
+**Status:** Complete
+
 
 ### Phase 6: Frontend — Chat Interface, Citations & Trace View
 **Goal:** Build the React chat UI with streaming display, clickable citation cards, source viewer panel, agent trace visualization, and responsive design.
