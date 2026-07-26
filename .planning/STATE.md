@@ -9,8 +9,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 
 ## Current Phase
 
-- **Phase:** 3
-- **Name:** LangGraph Agent Orchestration & Generation Pipeline
+- **Phase:** 4
+- **Name:** Sandboxed Code Execution Engine
 - **Status:** Complete
 
 ## Progress
@@ -20,6 +20,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 | 1 | Project Scaffolding & Core Infrastructure | Complete |
 | 2 | Ingestion Pipeline & Hybrid Retrieval Engine | Complete |
 | 3 | LangGraph Agent Orchestration & Generation Pipeline | Complete |
+| 4 | Sandboxed Code Execution Engine | Complete |
+
 
 
 
