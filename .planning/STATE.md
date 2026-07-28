@@ -9,8 +9,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 
 ## Current Phase
 
-- **Phase:** 8
-- **Name:** Incremental Re-Indexing & Codebase Evolution
+- **Phase:** 9
+- **Name:** Performance Optimization, Evaluation & Production Hardening
 - **Status:** Complete
 
 ## Progress
@@ -25,6 +25,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 | 6 | Frontend — Chat Interface, Citations & Trace View | Complete |
 | 7 | Feedback System & Admin Dashboard | Complete |
 | 8 | Incremental Re-Indexing & Codebase Evolution | Complete |
+| 9 | Performance Optimization, Evaluation & Production Hardening | Complete |
+
 
 
 
