@@ -9,8 +9,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 
 ## Current Phase
 
-- **Phase:** 5
-- **Name:** Conversation Memory & Multi-Hop Reasoning
+- **Phase:** 6
+- **Name:** Frontend — Chat Interface, Citations & Trace View
 - **Status:** Complete
 
 ## Progress
@@ -22,6 +22,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 | 3 | LangGraph Agent Orchestration & Generation Pipeline | Complete |
 | 4 | Sandboxed Code Execution Engine | Complete |
 | 5 | Conversation Memory & Multi-Hop Reasoning | Complete |
+| 6 | Frontend — Chat Interface, Citations & Trace View | Complete |
+
 
 
 
