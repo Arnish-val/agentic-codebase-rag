@@ -9,8 +9,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 
 ## Current Phase
 
-- **Phase:** 7
-- **Name:** Feedback System & Admin Dashboard
+- **Phase:** 8
+- **Name:** Incremental Re-Indexing & Codebase Evolution
 - **Status:** Complete
 
 ## Progress
@@ -24,6 +24,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 | 5 | Conversation Memory & Multi-Hop Reasoning | Complete |
 | 6 | Frontend — Chat Interface, Citations & Trace View | Complete |
 | 7 | Feedback System & Admin Dashboard | Complete |
+| 8 | Incremental Re-Indexing & Codebase Evolution | Complete |
+
 
 
 
