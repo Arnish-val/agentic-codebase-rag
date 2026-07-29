@@ -9,8 +9,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 
 ## Current Phase
 
-- **Phase:** 6
-- **Name:** Frontend — Chat Interface, Citations & Trace View
+- **Phase:** 7
+- **Name:** Feedback System & Admin Dashboard
 - **Status:** Complete
 
 ## Progress
@@ -23,6 +23,8 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 | 4 | Sandboxed Code Execution Engine | Complete |
 | 5 | Conversation Memory & Multi-Hop Reasoning | Complete |
 | 6 | Frontend — Chat Interface, Citations & Trace View | Complete |
+| 7 | Feedback System & Admin Dashboard | Complete |
+
 
 
 
