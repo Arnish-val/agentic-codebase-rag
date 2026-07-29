@@ -1,36 +1,21 @@
-# Dependencies
 node_modules/
-packages/*/node_modules/
-
-# Environment secrets
+dist/
+build/
 .env
 .env.local
-.env.*.local
-
-# Build outputs
-packages/client/dist/
-packages/*/dist/
-packages/*/.turbo/
-
-# Logs
-logs/
 *.log
 npm-debug.log*
-
-# OS
+yarn-debug.log*
+yarn-error.log*
 .DS_Store
 Thumbs.db
-
-# Docker volumes (local dev)
-.docker-volumes/
-
-# IDE
-.vscode/
 .idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 *.swp
-
-# Repo cache (ingestion service)
-/tmp/repos/
-
-# Sandbox build artifacts
-sandbox/images/*/node_modules/
+coverage/
+.planning/graphs/
+scratch/
