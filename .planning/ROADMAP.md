@@ -18,7 +18,8 @@
 ### Phase 2: Ingestion Pipeline & Hybrid Retrieval Engine
 **Goal:** Build the document ingestion pipeline (Git repos, Markdown, API docs), hierarchical chunking strategy, BGE-M3 embedding generation, MongoDB Atlas Vector Search index, BM25 index, and hybrid RRF retrieval with cross-encoder reranking.
 **Requirements:** RETR-01, RETR-02, RETR-03, RETR-04, RETR-05, INGEST-01, INGEST-02
-**Status:** Not Started
+**Status:** Complete
+
 
 ### Phase 3: LangGraph Agent Orchestration & Generation Pipeline
 **Goal:** Implement the LangGraph state graph with router agent, retrieval agents, generation agent, and critic/verification agent with re-retrieval loop. SSE streaming. Inline citations.
