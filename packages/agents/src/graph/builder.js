@@ -7,7 +7,8 @@ import { criticNode } from '../nodes/critic.js';
 import { codeExecutionNode } from '../nodes/codeExecution.js';
 import { memoryNode } from '../nodes/memory.js';
 import { clarificationNode } from '../nodes/clarification.js';
-import { getTransitionEdge, shouldRetrieve, shouldExecute, shouldVerify, shouldRetry } from './transitions.js';
+import { getTransitionEdge, shouldExecute, shouldRetry } from './transitions.js';
+
 
 let _graph = null;
 
