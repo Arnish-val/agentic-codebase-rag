@@ -1,0 +1,32 @@
+{
+  "name": "@agentic/server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Express API server for Agentic Codebase Intelligence Platform",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --passWithNoTests"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
+    "ioredis": "^5.4.1",
+    "express-rate-limit": "^7.4.0",
+    "rate-limit-redis": "^4.2.0",
+    "helmet": "^7.1.0",
+    "cors": "^2.8.5",
+    "compression": "^1.7.4",
+    "express-validator": "^7.2.0",
+    "winston": "^3.14.2",
+    "dotenv": "^16.4.5",
+    "uuid": "^10.0.0",
+    "axios": "^1.7.3",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
