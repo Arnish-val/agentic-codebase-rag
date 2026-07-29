@@ -11,15 +11,16 @@ See: .planning/PROJECT.md (updated 2026-07-29)
 
 - **Phase:** 1
 - **Name:** Project Scaffolding & Core Infrastructure
-- **Status:** Planning
+- **Status:** Complete
 
 ## Progress
 
 | Phase | Name | Status |
 |-------|------|--------|
-| 1 | Project Scaffolding & Core Infrastructure | Planning |
+| 1 | Project Scaffolding & Core Infrastructure | Complete |
 | 2 | Ingestion Pipeline & Hybrid Retrieval Engine | Not Started |
 | 3 | LangGraph Agent Orchestration & Generation Pipeline | Not Started |
+
 | 4 | Sandboxed Code Execution Engine | Not Started |
 | 5 | Conversation Memory & Multi-Hop Reasoning | Not Started |
 | 6 | Frontend — Chat Interface, Citations & Trace View | Not Started |
