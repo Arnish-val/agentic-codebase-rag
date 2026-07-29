@@ -1,4 +1,5 @@
-# Agentic Codebase Platform: Deep-Dive Explanation & Interview Guide
+# Agentic Codebase RAG Platform: Deep-Dive Explanation & Interview Guide
+
 
 This document contains a comprehensive explanation of how the platform operates end-to-end, a realistic e-commerce walkthrough example, and technical interview questions with architectural answers.
 
