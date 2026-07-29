@@ -1,6 +1,7 @@
-# Agentic Codebase & Documentation Intelligence Platform
+# Agentic Codebase RAG & Documentation Intelligence Platform
 
-> An enterprise-grade, multi-agent AI system for software engineering teams that performs multi-hop developer query resolution over codebases, documentation, and API references with grounded verification, exact line-range citations, and sandboxed code execution.
+> An enterprise-grade, multi-agent Agentic RAG system for software engineering teams that performs multi-hop developer query resolution over codebases, documentation, and API references with grounded verification, exact line-range citations, and sandboxed code execution.
+
 
 ---
 
