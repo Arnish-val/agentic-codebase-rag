@@ -1,7 +1,9 @@
 import { Router } from 'express';
 import { body, validationResult } from 'express-validator';
 import { v4 as uuidv4 } from 'uuid';
+import { createHash } from 'crypto';
 import axios from 'axios';
+
 
 import { requireAuth } from '../middleware/auth.js';
 import { queryRateLimiter } from '../middleware/rateLimiter.js';
@@ -156,9 +158,10 @@ router.post('/', requireAuth, queryRateLimiter, queryValidation, async (req, res
 
 function hashIp(ip) {
   if (!ip) return null;
-  const { createHash } = await import('crypto').catch(() => ({ createHash: null }));
-  if (!createHash) return null;
   return createHash('sha256').update(ip).digest('hex').slice(0, 16);
 }
 
 export default router;
+
+
+
