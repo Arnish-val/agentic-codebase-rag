@@ -1,0 +1,190 @@
+version: '3.9'
+
+services:
+  # MongoDB Atlas local dev substitute (for local dev only; use Atlas in prod)
+  mongodb:
+    image: mongo:7.0
+    container_name: agentic-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD:-devpassword}
+    networks:
+      - agentic-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis for caching and session TTL
+  redis:
+    image: redis:7.2-alpine
+    container_name: agentic-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --maxmemory 512mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    networks:
+      - agentic-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # BGE-M3 Embedding Service (via HuggingFace TEI)
+  embedding-service:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.5
+    container_name: agentic-embeddings
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - embedding_models:/data
+    environment:
+      MODEL_ID: BAAI/bge-m3
+      MAX_BATCH_TOKENS: 16384
+      MAX_CONCURRENT_REQUESTS: 32
+    networks:
+      - agentic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
+  # Cross-encoder Reranker Service
+  reranker-service:
+    image: ghcr.io/huggingface/text-embeddings-inference:cpu-1.5
+    container_name: agentic-reranker
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+    volumes:
+      - reranker_models:/data
+    environment:
+      MODEL_ID: BAAI/bge-reranker-v2-m3
+      MAX_BATCH_TOKENS: 8192
+      MAX_CONCURRENT_REQUESTS: 16
+    networks:
+      - agentic-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
+  # Backend API Server
+  server:
+    build:
+      context: ./packages/server
+      dockerfile: Dockerfile
+    container_name: agentic-server
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - MONGODB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-devpassword}@mongodb:27017/agentic?authSource=admin
+      - REDIS_URL=redis://redis:6379
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - agentic-network
+
+  # Agent Orchestration Service
+  agents:
+    build:
+      context: ./packages/agents
+      dockerfile: Dockerfile
+    container_name: agentic-agents
+    restart: unless-stopped
+    ports:
+      - "3002:3002"
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      embedding-service:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+      - MONGODB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-devpassword}@mongodb:27017/agentic?authSource=admin
+      - REDIS_URL=redis://redis:6379
+      - EMBEDDING_SERVICE_URL=http://embedding-service:80
+      - RERANKER_SERVICE_URL=http://reranker-service:80
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./sandbox:/sandbox:ro
+    networks:
+      - agentic-network
+
+  # Ingestion Pipeline (run on-demand)
+  ingestion:
+    build:
+      context: ./packages/ingestion
+      dockerfile: Dockerfile
+    container_name: agentic-ingestion
+    restart: "no"
+    profiles:
+      - ingestion
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      embedding-service:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      - MONGODB_URI=mongodb://${MONGO_USER:-admin}:${MONGO_PASSWORD:-devpassword}@mongodb:27017/agentic?authSource=admin
+      - EMBEDDING_SERVICE_URL=http://embedding-service:80
+    volumes:
+      - repo_cache:/tmp/repos
+    networks:
+      - agentic-network
+
+  # Frontend (served via Nginx in production)
+  client:
+    build:
+      context: ./packages/client
+      dockerfile: Dockerfile
+    container_name: agentic-client
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    networks:
+      - agentic-network
+
+volumes:
+  mongodb_data:
+  redis_data:
+  embedding_models:
+  reranker_models:
+  repo_cache:
+
+networks:
+  agentic-network:
+    driver: bridge
